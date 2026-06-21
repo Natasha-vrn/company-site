@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Магистраль Финанс</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #0a1628;
+  --navy-mid:  #122040;
+  --navy-light:#1a2f58;
+  --gold:      #c9a84c;
+  --gold-l:    #e4c97a;
+  --gold-pale: #f5e6c0;
+  --white:     #ffffff;
+  --muted:     rgba(255,255,255,0.55);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 60px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  background: rgba(10,22,40,0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,0.18);
+}
+.logo { display: flex; flex-direction: column; line-height: 1; text-decoration: none; align-items: center; text-align: center; }
+.logo-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600;
+  letter-spacing: 3px; color: var(--gold-l);
+  text-transform: uppercase;
+}
+.logo-sub { font-size: 9px; letter-spacing: 5px; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+nav { display: flex; gap: 32px; align-items: center; }
+nav a {
+  color: rgba(255,255,255,0.7); text-decoration: none;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s;
+}
+nav a:hover { color: var(--gold-l); }
+.nav-cta { border: 1px solid var(--gold); color: var(--gold) !important; padding: 10px 24px; transition: all 0.3s !important; }
+.nav-cta:hover { background: var(--gold); color: var(--navy) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 160px 60px 100px; position: relative; overflow: hidden; text-align: center;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 78% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+    linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.035;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,1) 60px, rgba(201,168,76,1) 61px),
+    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,1) 60px, rgba(201,168,76,1) 61px);
+}
+.hero-content { position: relative; max-width: 680px; display: flex; flex-direction: column; align-items: center; }
+.hero-desc { text-align: center; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 12px;
+  border: 1px solid rgba(201,168,76,0.35);
+  padding: 8px 20px; margin-bottom: 36px;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
+}
+.hero-badge::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(46px, 6vw, 82px); font-weight: 300;
+  line-height: 1.05; margin-bottom: 14px; letter-spacing: -1px;
+}
+.hero h1 em { font-style: italic; color: var(--gold-l); }
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 2.5vw, 26px); font-weight: 300;
+  color: var(--gold-pale); margin-bottom: 28px; letter-spacing: 1px;
+}
+.hero-desc {
+  font-size: 14px; line-height: 1.95;
+  color: rgba(255,255,255,0.6); max-width: 520px;
+  margin-bottom: 48px; letter-spacing: 0.3px;
+}
+.hero-actions { display: flex; gap: 20px; align-items: center; }
+.btn-gold {
+  background: var(--gold); color: var(--navy);
+  padding: 16px 40px; font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; border: none; cursor: pointer;
+  text-decoration: none; display: inline-block; transition: all 0.3s;
+}
+.btn-gold:hover { background: var(--gold-l); transform: translateY(-2px); }
+.btn-line {
+  color: rgba(255,255,255,0.65); font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; text-decoration: none;
+  padding-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,0.2); transition: all 0.3s;
+}
+.btn-line:hover { color: var(--gold-l); border-color: var(--gold); }
+
+/* ── DIVIDER ── */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.35; margin: 0 60px;
+}
+
+/* ── SECTION BASE ── */
+section { padding: 100px 60px; }
+.s-label {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+}
+.s-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+.s-label::after { content: ''; width: 30px; height: 1px; background: var(--gold); }
+.s-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px); font-weight: 300;
+  line-height: 1.15; margin-bottom: 56px; text-align: center;
+}
+
+/* ── ЧТО МЫ ДЕЛАЕМ ── */
+.what { background: var(--navy-mid); }
+.what-blocks { display: flex; flex-direction: column; gap: 2px; background: rgba(201,168,76,0.1); margin-bottom: 2px; }
+.what-block {
+  background: var(--navy-mid); padding: 40px 44px;
+  border: 1px solid transparent;
+  position: relative; overflow: hidden; transition: all 0.4s;
+}
+.what-block::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 3px; height: 0; background: var(--gold); transition: height 0.4s;
+}
+.what-block:hover { background: var(--navy-light); border-color: rgba(201,168,76,0.12); }
+.what-block:hover::before { height: 100%; }
+.what-block p { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.68); max-width: 860px; }
+
+.what-result {
+  background: var(--navy-light);
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 36px 44px;
+  display: flex; align-items: flex-start; gap: 28px;
+}
+.what-result-icon {
+  width: 48px; height: 48px; flex-shrink: 0;
+  border: 1px solid rgba(201,168,76,0.35);
+  display: flex; align-items: center; justify-content: center;
+}
+.what-result-icon svg { width: 22px; height: 22px; fill: var(--gold); }
+.what-result p { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.78); }
+.what-result strong { color: var(--gold-l); font-weight: 500; }
+
+/* ── НАПРАВЛЕНИЯ ── */
+.dirs { background: var(--navy); }
+.dirs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: rgba(201,168,76,0.1); }
+.dir-card {
+  background: var(--navy); padding: 48px 40px;
+  display: flex; flex-direction: column;
+  border: 1px solid transparent; transition: all 0.4s;
+  position: relative;
+}
+.dir-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  height: 3px; width: 0; background: var(--gold); transition: width 0.4s;
+}
+.dir-card:hover { background: var(--navy-light); border-color: rgba(201,168,76,0.12); }
+.dir-card:hover::after { width: 100%; }
+.dir-icon {
+  width: 52px; height: 52px;
+  border: 1px solid rgba(201,168,76,0.3);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 28px;
+}
+.dir-icon svg { width: 24px; height: 24px; fill: var(--gold); }
+.dir-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 400;
+  color: var(--gold-pale); margin-bottom: 16px;
+}
+.dir-card p { font-size: 13px; line-height: 1.85; color: var(--muted); flex: 1; margin-bottom: 32px; }
+.btn-dir {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); text-decoration: none;
+  border: 1px solid rgba(201,168,76,0.35); padding: 12px 22px;
+  transition: all 0.3s; align-self: flex-start;
+}
+.btn-dir:hover { background: var(--gold); color: var(--navy); }
+.btn-dir svg { width: 14px; height: 14px; fill: currentColor; }
+
+/* ── КОНТАКТЫ ── */
+.contacts { background: var(--navy-mid); }
+.contacts-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: rgba(201,168,76,0.1); }
+.contact-card {
+  background: var(--navy-mid); padding: 44px 36px;
+  border: 1px solid transparent; transition: all 0.35s;
+}
+.contact-card:hover { background: var(--navy-light); border-color: rgba(201,168,76,0.12); }
+.c-label {
+  font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.c-label::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+.c-icon {
+  width: 44px; height: 44px;
+  border: 1px solid rgba(201,168,76,0.3);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+}
+.c-icon svg { width: 20px; height: 20px; fill: var(--gold); }
+.c-value { font-size: 16px; color: rgba(255,255,255,0.85); font-weight: 400; margin-bottom: 4px; }
+.c-value a { color: var(--gold-l); text-decoration: none; transition: color 0.2s; }
+.c-value a:hover { color: var(--gold-pale); }
+.c-hint { font-size: 11px; color: var(--muted); }
+.messengers { display: flex; flex-direction: column; gap: 10px; }
+.msg-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2);
+  color: rgba(255,255,255,0.8); font-size: 12px; letter-spacing: 1px;
+  padding: 10px 16px; text-decoration: none; transition: all 0.25s;
+}
+.msg-btn:hover { background: rgba(201,168,76,0.15); border-color: rgba(201,168,76,0.5); color: var(--gold-l); }
+.msg-btn svg { width: 16px; height: 16px; fill: var(--gold); flex-shrink: 0; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(201,168,76,0.15);
+  padding: 36px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-copy { font-size: 11px; color: var(--muted); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  header { padding: 16px 24px; }
+  section { padding: 70px 24px; }
+  .hero { padding: 120px 24px 80px; }
+  .gold-line { margin: 0 24px; }
+  .dirs-grid, .contacts-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  nav { display: none; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <a href="#" class="logo">
+    <span class="logo-main">Магистраль Финанс</span>
+    <span class="logo-sub">Надёжный маршрут для вашего бизнеса</span>
+  </a>
+  <nav>
+    <a href="#what">О компании</a>
+    <a href="buh.html">Услуги бухгалтера</a>
+    <a href="law.html">Услуги юриста</a>
+    <a href="tender.html">Бизнес-ассистент</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+</header>
+
+<!-- ═══ ПЕРВЫЙ ЭКРАН ═══ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Бухгалтерия · Право · Тендеры</div>
+    <h1>Магистраль <em>Финанс</em></h1>
+    <p class="hero-tagline">Надёжный маршрут для вашего бизнеса</p>
+    <p class="hero-desc">
+      Берём на себя бухгалтерию, юридические вопросы и сопровождение торгов —
+      полностью или в той части, которая нужна именно вам.
+      Вы сосредотачиваетесь на бизнесе, мы заботимся об остальном.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacts" class="btn-gold">Получить консультацию</a>
+      <a href="#what" class="btn-line">Узнать подробнее</a>
+    </div>
+  </div>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ═══ ЧТО МЫ ДЕЛАЕМ ═══ -->
+<section class="what" id="what">
+  <div class="s-label">О компании</div>
+  <h2 class="s-title">Что мы делаем</h2>
+
+  <div class="what-blocks">
+    <div class="what-block">
+      <p>Берём на себя бухгалтерию, кадры и налоги — полностью или в части, которая нужна именно вам. Можно передать учёт на постоянное ведение, а можно обратиться разово: регистрация ИП/ООО, подбор режима налогообложения, разобраться с ошибками, ответить на требование налоговой и т.д.</p>
+    </div>
+    <div class="what-block">
+      <p>Если нужна юридическая помощь — составим договор, который защитит ваши интересы, или проверим документ от контрагента и укажем на слабые места и риски. Поможем разобраться, если условия договора или действия другой стороны нарушают нормы закона. А если дело доходит до суда — наш адвокат представит ваши интересы.</p>
+    </div>
+    <div class="what-block">
+      <p>Если не знаете, с чего начать работу с тендерами — подскажем и поможем разобраться. А если нужна комплексная поддержка — берём на себя весь процесс: от поиска подходящих торгов и анализа заказчиков и конкурентов до подготовки документов и подачи заявки.</p>
+    </div>
+  </div>
+
+  <div class="what-result">
+    <div class="what-result-icon">
+      <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+    </div>
+    <p>В итоге вы получаете: <strong>меньше времени на бумажную работу</strong>, уверенность, что отчётность и документы в порядке, и возможность <strong>сосредоточиться на бизнесе</strong>, а не на сроках и формальностях.</p>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ═══ НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ ═══ -->
+<section class="dirs" id="directions">
+  <div class="s-label">Услуги</div>
+  <h2 class="s-title">Направления деятельности</h2>
+  <div class="dirs-grid">
+
+    <div class="dir-card">
+      <div class="dir-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 17h8v1H8v-1zm0-3h8v1H8v-1zm0-3h4v1H8v-1z"/></svg>
+      </div>
+      <h3>Бухгалтерские услуги</h3>
+      <p>Ведение бухгалтерского и налогового учёта, подготовка отчётности, кадровое делопроизводство, регистрация бизнеса и подбор оптимального режима налогообложения.</p>
+      <a href="buh.html" class="btn-dir">
+        Перейти
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="dir-card">
+      <div class="dir-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      </div>
+      <h3>Юридические услуги</h3>
+      <p>Составление и проверка договоров, защита интересов при спорах с контрагентами и госорганами, представительство в суде. Юридическая поддержка на всех этапах.</p>
+      <a href="law.html" class="btn-dir">
+        Перейти
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="dir-card">
+      <div class="dir-icon">
+        <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 5.9 17 7 17h14v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 23.46 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+      </div>
+      <h3>Бизнес-ассистент</h3>
+      <p>Полное сопровождение тендерных процедур: поиск торгов, анализ заказчиков и конкурентов, подготовка документации, подача заявки и поддержка на всех этапах.</p>
+      <a href="tender.html" class="btn-dir">
+        Перейти
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ═══ КОНТАКТЫ ═══ -->
+<section class="contacts" id="contacts">
+  <div class="s-label">Свяжитесь с нами</div>
+  <h2 class="s-title">Контакты</h2>
+  <div class="contacts-grid">
+
+    <div class="contact-card">
+      <div class="c-icon">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      </div>
+      <div class="c-label">Телефон</div>
+      <!-- ЗАМЕНИТЕ НА РЕАЛЬНЫЙ НОМЕР -->
+      <div class="c-value"><a href="tel:+70000000000">+7 (000) 000-00-00</a></div>
+      <div class="c-hint">Пн–Пт: 9:00 – 18:00</div>
+    </div>
+
+    <div class="contact-card">
+      <div class="c-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </div>
+      <div class="c-label">Электронная почта</div>
+      <!-- ЗАМЕНИТЕ НА РЕАЛЬНЫЙ EMAIL -->
+      <div class="c-value"><a href="mailto:info@magistral-finance.ru">info@magistral-finance.ru</a></div>
+      <div class="c-hint">Ответим в течение дня</div>
+    </div>
+
+    <div class="contact-card">
+      <div class="c-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/></svg>
+      </div>
+      <div class="c-label">Мессенджеры</div>
+      <div class="messengers">
+        <!-- ЗАМЕНИТЕ ССЫЛКИ НА РЕАЛЬНЫЕ -->
+        <a href="https://t.me/username" class="msg-btn">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.94 8.19l-2.02 9.53c-.15.67-.54.84-1.09.52l-3-2.21-1.45 1.4c-.16.16-.3.3-.61.3l.22-3.07 5.59-5.05c.24-.22-.05-.34-.37-.12L6.32 14.37 3.38 13.5c-.66-.2-.68-.66.14-.98l11.63-4.48c.55-.2 1.03.13.79.97v.18z"/></svg>
+          Telegram
+        </a>
+        <a href="https://wa.me/70000000000" class="msg-btn">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="logo">
+    <span class="logo-main">Магистраль Финанс</span>
+    <span class="logo-sub">Надёжный маршрут для вашего бизнеса</span>
+  </div>
+  <div class="footer-copy">© 2025 Магистраль Финанс. Все права защищены.</div>
+</footer>
+
+</body>
+</html>
