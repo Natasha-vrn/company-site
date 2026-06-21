@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Магистраль Финанс — Услуги бухгалтера</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628; --navy-mid: #122040; --navy-light: #1a2f58;
+  --gold: #c9a84c; --gold-l: #e4c97a; --gold-pale: #f5e6c0;
+  --white: #ffffff; --muted: rgba(255,255,255,0.55);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--navy); color: var(--white); font-family: 'Montserrat', sans-serif; font-weight: 300; overflow-x: hidden; }
+section[id], div[id^="mf-"] { scroll-margin-top: 110px; }
+
+/* HEADER */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 18px 40px; display: flex; flex-direction: column; align-items: center; gap: 12px;
+  background: rgba(10,22,40,0.94); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,0.18);
+}
+.logo { display: flex; flex-direction: column; line-height: 1; text-decoration: none; align-items: center; text-align: center; }
+.logo-main { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; letter-spacing: 3px; color: var(--gold-l); text-transform: uppercase; }
+.logo-sub { font-size: 9px; letter-spacing: 5px; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+nav { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; justify-content: center; }
+nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; white-space: nowrap; }
+nav a:hover, nav a.active { color: var(--gold-l); }
+nav a.active { padding-bottom: 4px; border-bottom: 1px solid var(--gold); }
+
+/* HERO */
+.page-hero { padding: 160px 40px 70px; position: relative; overflow: hidden; text-align: center; }
+.page-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 55% 70% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 60%), linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); }
+.page-hero-grid {
+  position: absolute; inset: 0; opacity: 0.035;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,1) 60px, rgba(201,168,76,1) 61px),
+    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,1) 60px, rgba(201,168,76,1) 61px);
+}
+.page-hero-content { position: relative; max-width: 880px; margin: 0 auto; }
+.page-intro-text {
+  font-size: 15px; line-height: 1.95; color: rgba(255,255,255,0.78);
+  max-width: 800px; margin: 0 auto 40px; text-align: left;
+  padding: 32px 38px; border-left: 2px solid var(--gold); background: rgba(255,255,255,0.02);
+}
+.hero-actions { display: flex; gap: 18px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.btn-gold {
+  background: var(--gold); color: var(--navy); padding: 16px 36px; font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s;
+}
+.btn-gold:hover { background: var(--gold-l); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.25); }
+.btn-line {
+  color: rgba(255,255,255,0.75); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; padding: 16px 30px; border: 1px solid rgba(201,168,76,0.4); transition: all 0.3s; display: inline-block;
+  background: none; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 400;
+}
+.btn-line:hover { color: var(--gold-l); border-color: var(--gold); background: rgba(201,168,76,0.05); }
+
+.gold-line { height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.35; margin: 0 40px; }
+
+/* TILES */
+.tasks { padding: 80px 40px; background: var(--navy); }
+.tasks-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; line-height: 1.15; text-align: center; margin-bottom: 12px; }
+.tasks-sub { font-size: 13px; color: var(--muted); text-align: center; max-width: 560px; margin: 0 auto 50px; line-height: 1.7; }
+.tiles-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 22px; }
+.tile { background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.15); padding: 32px 28px 28px; display: flex; flex-direction: column; transition: border-color 0.3s; }
+.tile:hover { border-color: rgba(201,168,76,0.35); }
+.tile-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--gold-pale); margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid rgba(201,168,76,0.22); display: flex; align-items: center; gap: 12px; }
+.tile-title::before { content: ''; width: 8px; height: 8px; background: var(--gold); flex-shrink: 0; transform: rotate(45deg); }
+.tile-list { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.tile-item { display: flex; flex-direction: column; padding: 12px 6px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.tile-item:last-child { border-bottom: none; }
+.tile-name { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.55; margin-bottom: 4px; }
+.tile-price { font-size: 12px; color: var(--gold-l); letter-spacing: 0.3px; }
+.tile-price b { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 500; margin: 0 2px; }
+.tile-item.to-calc { cursor: pointer; transition: background 0.2s, padding 0.2s; }
+.tile-item.to-calc:hover { background: rgba(201,168,76,0.05); padding-left: 12px; padding-right: 12px; }
+.tile-item.to-calc .tile-price { color: var(--gold); font-style: italic; }
+
+/* CTA */
+.cta { background: var(--navy); padding: 90px 40px; text-align: center; position: relative; overflow: hidden; }
+.cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%); }
+.cta-inner { position: relative; max-width: 700px; margin: 0 auto; }
+.cta-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; display: flex; align-items: center; justify-content: center; gap: 14px; }
+.cta-label::before, .cta-label::after { content: ''; width: 30px; height: 1px; background: var(--gold); }
+.cta h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 46px); font-weight: 300; line-height: 1.15; margin-bottom: 18px; }
+.cta h2 em { font-style: italic; color: var(--gold-l); }
+.cta p { font-size: 14px; line-height: 1.9; color: var(--muted); margin-bottom: 36px; max-width: 540px; margin-left: auto; margin-right: auto; }
+.cta-actions { display: flex; gap: 18px; align-items: center; justify-content: center; flex-wrap: wrap; }
+
+/* CONSENT */
+.consent-row { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 14px; cursor: pointer; }
+.consent-box { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; border: 1px solid rgba(201,168,76,0.45); background: rgba(255,255,255,0.04); position: relative; transition: all 0.2s; }
+.consent-row.checked .consent-box { background: var(--gold); border-color: var(--gold); }
+.consent-row.checked .consent-box::after { content: '✓'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -55%); font-size: 12px; color: var(--navy); font-weight: 700; }
+.consent-text { font-size: 11px; line-height: 1.6; color: rgba(255,255,255,0.6); }
+.consent-text a { color: var(--gold-l); text-decoration: underline; cursor: pointer; }
+.consent-text a:hover { color: var(--gold-pale); }
+
+/* DOC MODAL */
+.doc-modal-bg { position: fixed; inset: 0; background: rgba(10,22,40,0.9); backdrop-filter: blur(6px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
+.doc-modal-bg.show { display: flex; }
+.doc-modal { background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.3); max-width: 760px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; position: relative; }
+.doc-modal-head { padding: 24px 32px; border-bottom: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.doc-modal-head h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--gold-pale); line-height: 1.3; }
+.doc-modal-close { background: none; border: none; color: var(--muted); font-size: 26px; cursor: pointer; line-height: 1; flex-shrink: 0; }
+.doc-modal-close:hover { color: var(--gold-l); }
+.doc-modal-body { padding: 28px 32px; overflow-y: auto; font-size: 13px; line-height: 1.75; color: rgba(255,255,255,0.72); }
+.doc-modal-body h4 { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 500; color: var(--gold-l); margin: 20px 0 8px; }
+.doc-modal-body h4:first-child { margin-top: 0; }
+.doc-modal-body p { margin-bottom: 12px; }
+.doc-modal-body ul { margin: 0 0 12px 0; padding-left: 22px; }
+.doc-modal-body li { margin-bottom: 8px; }
+
+/* MODAL */
+.modal-bg { position: fixed; inset: 0; background: rgba(10,22,40,0.85); backdrop-filter: blur(6px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+.modal-bg.show { display: flex; }
+.modal { background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.3); padding: 36px; max-width: 480px; width: 100%; position: relative; }
+.modal-close { position: absolute; top: 14px; right: 18px; background: none; border: none; color: var(--muted); font-size: 24px; cursor: pointer; line-height: 1; }
+.modal-close:hover { color: var(--gold-l); }
+.modal h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--gold-pale); text-align: center; margin-bottom: 8px; }
+.modal-sub { font-size: 12px; color: var(--muted); text-align: center; margin-bottom: 22px; line-height: 1.7; }
+.modal-fg { margin-bottom: 14px; }
+.modal-fg label { display: block; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 7px; }
+.modal-fg input, .modal-fg textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--white); padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 300; outline: none; transition: border-color 0.3s; }
+.modal-fg input:focus, .modal-fg textarea:focus { border-color: rgba(201,168,76,0.5); }
+.modal-fg textarea { resize: vertical; min-height: 70px; }
+.modal-submit { width: 100%; background: var(--gold); color: var(--navy); border: none; padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; margin-top: 6px; }
+.modal-submit:hover { background: var(--gold-l); }
+.modal-succ { text-align: center; padding: 20px 0; display: none; }
+.modal-succ.show { display: block; }
+.modal-succ-icon { font-size: 40px; margin-bottom: 12px; }
+.modal-succ h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold-pale); margin-bottom: 8px; }
+.modal-succ p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* FOOTER */
+footer { background: #060f1d; border-top: 1px solid rgba(201,168,76,0.15); padding: 50px 40px 24px; }
+.footer-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.footer-brand .logo-main { font-size: 18px; }
+.footer-brand p { font-size: 12px; color: var(--muted); line-height: 1.85; margin-top: 18px; max-width: 340px; }
+.footer-col h4 { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(201,168,76,0.2); }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+.footer-col li a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
+.footer-col li a:hover { color: var(--gold-l); }
+.footer-contact-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.footer-contact-value { font-size: 13px; color: rgba(255,255,255,0.85); }
+.footer-contact-value a { color: var(--gold-l); }
+.footer-copy { max-width: 1180px; margin: 24px auto 0; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--muted); flex-wrap: wrap; gap: 10px; }
+
+@media (max-width: 1000px) { header { padding: 14px 24px; } nav { gap: 18px; } nav a { font-size: 10px; letter-spacing: 1.5px; } .page-hero { padding: 170px 24px 60px; } }
+@media (max-width: 768px) {
+  .page-hero { padding: 180px 20px 50px; } .page-intro-text { padding: 24px 22px; font-size: 14px; line-height: 1.8; }
+  .gold-line { margin: 0 20px; } .tasks, .cta { padding: 60px 20px; } .tiles-grid { gap: 16px; } .tile { padding: 26px 22px 22px; }
+  footer { padding: 40px 20px 20px; } .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .doc-modal-head { padding: 18px 20px; } .doc-modal-head h3 { font-size: 18px; } .doc-modal-body { padding: 20px; }
+}
+@media (max-width: 600px) {
+  nav { gap: 12px 14px; } nav a { font-size: 9px; letter-spacing: 1px; }
+  .hero-actions { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; } .hero-actions a { width: 100%; text-align: center; padding: 15px 20px; }
+  .cta-actions { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; } .cta-actions .btn-gold, .cta-actions .btn-line { width: 100%; text-align: center; }
+  .footer-copy { flex-direction: column; text-align: center; gap: 6px; } .modal { padding: 28px 22px; }
+}
+
+/* ════════ КАЛЬКУЛЯТОР ════════ */
+.mf-calc {
+  --mf-navy: #0a1628; --mf-navy-mid: #122040; --mf-navy-lt: #1a2f58;
+  --mf-gold: #c9a84c; --mf-gold-lt: #e4c97a; --mf-gold-pale: #f5e6c0;
+  --mf-white: #ffffff; --mf-muted: rgba(255,255,255,0.52);
+  font-family: 'Montserrat', sans-serif; font-weight: 300;
+  background: var(--mf-navy); color: var(--mf-white); padding: 80px 40px; box-sizing: border-box;
+}
+.mf-calc *, .mf-calc *::before, .mf-calc *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.mf-stitle { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; line-height: 1.15; margin-bottom: 40px; text-align: center; }
+.mf-prog { display: flex; margin-bottom: 30px; max-width: 820px; margin-left: auto; margin-right: auto; }
+.mf-cp { flex:1; display:flex; flex-direction:column; align-items:center; gap:7px; position:relative; min-width: 0; }
+.mf-cp:not(:last-child)::after { content:''; position:absolute; top:15px; left:50%; width:100%; height:1px; background:rgba(201,168,76,.18); z-index:0; }
+.mf-dot { width:30px; height:30px; border-radius:50%; border:1px solid rgba(201,168,76,.3); display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--mf-muted); background:var(--mf-navy); position:relative; z-index:1; transition:all .3s; }
+.mf-dot.done { background:var(--mf-gold); border-color:var(--mf-gold); color:var(--mf-navy); font-weight:700; }
+.mf-dot.cur { border-color:var(--mf-gold); color:var(--mf-gold); }
+.mf-dlbl { font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--mf-muted); text-align:center; }
+.mf-dlbl.cur { color:var(--mf-gold); }
+.mf-block { background:var(--mf-navy-mid); border:1px solid rgba(201,168,76,.1); margin-bottom:12px; max-width:820px; margin-left:auto; margin-right:auto; }
+.mf-block.open { border-color:rgba(201,168,76,.3); }
+.mf-bhead { display:flex; align-items:center; gap:12px; padding:18px 22px; cursor:pointer; user-select:none; }
+.mf-bnum { width:32px; height:32px; border-radius:50%; border:1px solid rgba(201,168,76,.3); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:15px; color:var(--mf-gold); flex-shrink:0; transition:all .3s; }
+.mf-bnum.done { background:var(--mf-gold); border-color:var(--mf-gold); color:var(--mf-navy); }
+.mf-btw { flex:1; min-width: 0; }
+.mf-bt { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:400; color:var(--mf-gold-pale); }
+.mf-bh { font-size:10px; color:var(--mf-muted); margin-top:3px; }
+.mf-arr { color:var(--mf-gold); font-size:14px; transition:transform .3s; flex-shrink:0; }
+.mf-arr.open { transform:rotate(180deg); }
+.mf-body { padding:0 22px 22px; display:none; }
+.mf-body.open { display:block; }
+.mf-fg { margin-bottom:15px; }
+.mf-fg > label { display:block; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--mf-gold); margin-bottom:7px; }
+.mf-hint { font-size:11px; color:var(--mf-muted); margin-bottom:10px; line-height:1.6; }
+.mf-rg { display:flex; gap:8px; flex-wrap:wrap; }
+.mf-ro { display:flex; align-items:center; gap:10px; padding:10px 14px; border:1px solid rgba(255,255,255,.1); cursor:pointer; transition:all .3s; flex:1; min-width:140px; }
+.mf-ro:hover { border-color:rgba(201,168,76,.4); }
+.mf-ro.sel { border-color:var(--mf-gold); background:rgba(201,168,76,.08); }
+.mf-rd { width:14px; height:14px; border-radius:50%; border:1px solid rgba(255,255,255,.3); flex-shrink:0; position:relative; transition:all .3s; }
+.mf-ro.sel .mf-rd { border-color:var(--mf-gold); }
+.mf-rd::after { content:''; width:7px; height:7px; border-radius:50%; background:var(--mf-gold); position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); opacity:0; transition:opacity .3s; }
+.mf-ro.sel .mf-rd::after { opacity:1; }
+.mf-rl { font-size:12px; line-height:1.4; }
+.mf-togrow { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.mf-tog { width:42px; height:22px; background:rgba(255,255,255,.1); border-radius:11px; position:relative; cursor:pointer; transition:background .3s; flex-shrink:0; }
+.mf-tog.on { background:var(--mf-gold); }
+.mf-togk { width:16px; height:16px; border-radius:50%; background:#fff; position:absolute; top:3px; left:3px; transition:left .3s; pointer-events:none; }
+.mf-tog.on .mf-togk { left:23px; }
+.mf-togt { font-size:12px; color:rgba(255,255,255,.75); }
+.mf-ctr { display:flex; align-items:center; }
+.mf-cb { width:36px; height:36px; background:rgba(201,168,76,.1); border:1px solid rgba(201,168,76,.2); color:var(--mf-gold); font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .3s; flex-shrink:0; font-family:'Montserrat',sans-serif; line-height:1; }
+.mf-cb:hover { background:rgba(201,168,76,.22); }
+.mf-cv { width:58px; text-align:center; padding:8px 0; border-top:1px solid rgba(255,255,255,.1); border-bottom:1px solid rgba(255,255,255,.1); color:var(--mf-white); font-size:14px; background:rgba(255,255,255,.04); }
+.mf-cu { font-size:11px; color:var(--mf-muted); margin-left:10px; }
+.mf-docgrid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:10px; }
+.mf-dfw label { display:block; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.45); margin-bottom:5px; }
+.mf-dinp { width:100%; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); color:var(--mf-white); padding:9px 12px; font-family:'Montserrat',sans-serif; font-size:13px; outline:none; transition:border-color .3s; }
+.mf-dinp:focus { border-color:rgba(201,168,76,.4); }
+.mf-exgrid { display:flex; flex-direction:column; gap:10px; margin-top:6px; }
+.mf-exrow { display:flex; align-items:center; gap:14px; padding:12px 14px; border:1px solid rgba(255,255,255,.06); background:rgba(255,255,255,.02); flex-wrap: wrap; }
+.mf-exinfo { flex:1; min-width: 0; }
+.mf-exname { font-size:12px; color:rgba(255,255,255,.8); }
+.mf-exsub { font-size:10px; color:var(--mf-muted); margin-top:2px; }
+.mf-once-group { margin-top: 14px; }
+.mf-once-gtitle { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mf-gold); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+.mf-once-item { display: flex; align-items: center; gap: 14px; padding: 10px 12px; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 6px; cursor: pointer; transition: all 0.25s; background: rgba(255,255,255,0.02); flex-wrap: wrap; }
+.mf-once-item:hover { border-color: rgba(201,168,76,0.3); }
+.mf-once-item.sel { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.06); }
+.mf-once-check { width: 16px; height: 16px; border: 1px solid rgba(201,168,76,0.4); flex-shrink: 0; position: relative; transition: all 0.25s; }
+.mf-once-item.sel .mf-once-check { background: var(--mf-gold); border-color: var(--mf-gold); }
+.mf-once-item.sel .mf-once-check::after { content: '✓'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -52%); font-size: 10px; color: var(--mf-navy); font-weight: 700; }
+.mf-once-name { flex: 1; min-width: 180px; font-size: 12.5px; color: rgba(255,255,255,0.85); line-height: 1.4; }
+.mf-once-price { font-size: 12px; color: var(--mf-gold-lt); white-space: nowrap; }
+.mf-once-price b { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 500; }
+.mf-once-qty { display: flex; align-items: center; margin-left: auto; }
+.mf-once-qb { width: 26px; height: 26px; background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.2); color: var(--mf-gold); font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; }
+.mf-once-qv { width: 36px; text-align: center; padding: 5px 0; border-top: 1px solid rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.1); font-size: 12px; background: rgba(255,255,255,.04); }
+.mf-acts { display:flex; gap:12px; align-items:center; margin-top:10px; flex-wrap:wrap; max-width:820px; margin-left:auto; margin-right:auto; }
+.mf-btn-calc { background:var(--mf-gold); color:var(--mf-navy); border:none; padding:14px 28px; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:all .3s; }
+.mf-btn-calc:hover { background:var(--mf-gold-lt); box-shadow:0 8px 24px rgba(201,168,76,.3); }
+.mf-btn-rst { background:none; border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.5); padding:14px 18px; font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:all .3s; }
+.mf-btn-rst:hover { border-color:rgba(255,255,255,.3); color:rgba(255,255,255,.7); }
+.mf-note { font-size:10px; color:rgba(255,255,255,.28); line-height:1.6; margin-top:10px; max-width:820px; margin-left:auto; margin-right:auto; }
+.mf-result { display:none; background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.04)); border:1px solid rgba(201,168,76,.4); padding:32px; margin:16px auto; text-align:center; max-width:820px; }
+.mf-result.show { display:block; animation:mfFadeUp .5s ease; }
+.mf-rlbl { font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--mf-gold); margin-bottom:10px; }
+.mf-ramt { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,6vw,62px); font-weight:300; color:var(--mf-gold-lt); line-height:1; margin-bottom:4px; }
+.mf-rsfx { font-size:13px; color:var(--mf-muted); margin-bottom:20px; }
+.mf-r-once { display: none; padding-top: 16px; margin-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); }
+.mf-r-once.show { display: block; }
+.mf-r-once-lbl { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--mf-gold); margin-bottom: 6px; }
+.mf-r-once-val { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--mf-gold-lt); }
+.mf-r-once-sfx { font-size: 12px; color: var(--mf-muted); margin-top: 2px; }
+.mf-rdisc { font-size:10px; color:rgba(255,255,255,.32); line-height:1.75; border-top:1px solid rgba(255,255,255,.08); padding-top:16px; text-align:left; margin-top: 20px; }
+.mf-lead { background:var(--mf-navy-mid); border:1px solid rgba(201,168,76,.15); padding:30px; margin:6px auto 0; display:none; max-width:820px; }
+.mf-lead h3 { font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:400; color:var(--mf-gold-pale); margin-bottom:18px; text-align:center; }
+.mf-frow2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.mf-fg input, .mf-fg textarea { width:100%; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); color:var(--mf-white); padding:11px 14px; font-family:'Montserrat',sans-serif; font-size:12px; font-weight:300; outline:none; transition:border-color .3s; }
+.mf-fg input:focus, .mf-fg textarea:focus { border-color:rgba(201,168,76,.5); }
+.mf-fg textarea { resize:vertical; min-height:70px; }
+.mf-fsubmit { width:100%; background:var(--mf-gold); color:var(--mf-navy); border:none; padding:13px; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:all .3s; margin-top:4px; }
+.mf-fsubmit:hover { background:var(--mf-gold-lt); }
+.mf-succ { display:none; background:rgba(201,168,76,.08); border:1px solid rgba(201,168,76,.35); padding:28px; text-align:center; margin:6px auto 0; max-width:820px; }
+.mf-succ.show { display:block; animation:mfFadeUp .5s ease; }
+.mf-succ h4 { font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--mf-gold-pale); margin-bottom:8px; }
+.mf-succ p { font-size:12px; color:var(--mf-muted); line-height:1.7; }
+@keyframes mfFadeUp { from{opacity:0;transform:translateY(18px);} to{opacity:1;transform:translateY(0);} }
+@media (max-width: 768px) {
+  .mf-calc { padding: 60px 18px; } .mf-docgrid { grid-template-columns: 1fr 1fr; } .mf-frow2 { grid-template-columns: 1fr; }
+  .mf-acts { flex-direction: column; align-items: stretch; } .mf-btn-calc, .mf-btn-rst { width: 100%; text-align: center; }
+}
+@media (max-width: 520px) {
+  .mf-dlbl { display: none; } .mf-prog { gap: 4px; } .mf-docgrid { grid-template-columns: 1fr; }
+  .mf-once-name { min-width: 0; flex-basis: 100%; } .mf-once-price, .mf-once-qty { margin-left: 0; }
+  .mf-bhead { padding: 14px 16px; gap: 10px; } .mf-bt { font-size: 16px; } .mf-body { padding: 0 16px 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">
+    <span class="logo-main">Магистраль Финанс</span>
+    <span class="logo-sub">Надёжный маршрут для вашего бизнеса</span>
+  </a>
+  <nav>
+    <a href="index.html#what">О компании</a>
+    <a href="buh.html" class="active">Услуги бухгалтера</a>
+    <a href="law.html">Услуги юриста</a>
+    <a href="tender.html">Бизнес-ассистент</a>
+    <a href="index.html#contacts">Контакты</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="page-intro-text">
+      Каждый бизнес имеет свои особенности, поэтому универсальных решений в бухгалтерии не существует. Наши специалисты сопровождают предпринимателей и организации на разных этапах развития бизнеса: от первых шагов и выбора системы налогообложения до полного бухгалтерского и кадрового сопровождения действующих компаний. Многолетний опыт работы с различными сферами деятельности позволяет нам подбирать решения, которые действительно подходят задачам клиента.
+    </div>
+    <div class="hero-actions">
+      <a href="#mf-tasks" class="btn-gold">Перейти к списку услуг</a>
+      <a href="#mf-calc" class="btn-line">Рассчитать стоимость</a>
+    </div>
+  </div>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ПЛИТКИ (информационные) -->
+<section class="tasks" id="mf-tasks">
+  <h2 class="tasks-title">Какие задачи мы решаем</h2>
+  <p class="tasks-sub">Ниже — основные разовые услуги и ориентировочные цены. Для расчёта постоянного обслуживания воспользуйтесь калькулятором.</p>
+  <div class="tiles-grid" id="mf-tiles"></div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- КАЛЬКУЛЯТОР -->
+<section class="mf-calc" id="mf-calc">
+  <h2 class="mf-stitle">Калькулятор</h2>
+
+  <div class="mf-prog">
+    <div class="mf-cp"><div class="mf-dot cur" id="mf-d1">1</div><div class="mf-dlbl cur" id="mf-l1">Обслуживание</div></div>
+    <div class="mf-cp"><div class="mf-dot" id="mf-d2">2</div><div class="mf-dlbl" id="mf-l2">Документы</div></div>
+    <div class="mf-cp"><div class="mf-dot" id="mf-d3">3</div><div class="mf-dlbl" id="mf-l3">Кадры</div></div>
+    <div class="mf-cp"><div class="mf-dot" id="mf-d4">4</div><div class="mf-dlbl" id="mf-l4">Доп.</div></div>
+    <div class="mf-cp"><div class="mf-dot" id="mf-d5">5</div><div class="mf-dlbl" id="mf-l5">Разовые</div></div>
+  </div>
+
+  <!-- Блок 1 -->
+  <div class="mf-block open" id="mf-cb1">
+    <div class="mf-bhead" id="mf-bh1">
+      <div class="mf-bnum" id="mf-bn1">1</div>
+      <div class="mf-btw"><div class="mf-bt">Абонентское обслуживание</div><div class="mf-bh">Подготовка и сдача отчётности</div></div>
+      <span class="mf-arr open" id="mf-a1">▼</span>
+    </div>
+    <div class="mf-body open" id="mf-bb1">
+      <div class="mf-fg">
+        <label>Форма собственности</label>
+        <div class="mf-rg" id="mf-rg-own">
+          <div class="mf-ro" data-mfgroup="own" data-mfval="ip"><div class="mf-rd"></div><div class="mf-rl">ИП<br><span style="font-size:10px;color:var(--mf-muted)">Индивидуальный предприниматель</span></div></div>
+          <div class="mf-ro" data-mfgroup="own" data-mfval="ooo"><div class="mf-rd"></div><div class="mf-rl">ООО<br><span style="font-size:10px;color:var(--mf-muted)">Общество с ограниченной ответственностью</span></div></div>
+        </div>
+      </div>
+      <div class="mf-fg" id="mf-fg-sno" style="display:none;">
+        <label>Система налогообложения</label>
+        <div class="mf-rg" id="mf-rg-sno"></div>
+      </div>
+      <div class="mf-fg" id="mf-fg-vat" style="display:none;">
+        <label>Плательщик НДС?</label>
+        <div class="mf-rg" id="mf-rg-vat">
+          <div class="mf-ro" data-mfgroup="vat" data-mfval="no"><div class="mf-rd"></div><div class="mf-rl">Без НДС</div></div>
+          <div class="mf-ro" data-mfgroup="vat" data-mfval="yes"><div class="mf-rd"></div><div class="mf-rl">С НДС</div></div>
+        </div>
+      </div>
+      <div class="mf-fg" id="mf-fg-staff" style="display:none;">
+        <label id="mf-staff-label">Есть ли сотрудники?</label>
+        <div class="mf-rg" id="mf-rg-staff">
+          <div class="mf-ro" data-mfgroup="staff" data-mfval="no"><div class="mf-rd"></div><div class="mf-rl">Нет сотрудников</div></div>
+          <div class="mf-ro" data-mfgroup="staff" data-mfval="yes"><div class="mf-rd"></div><div class="mf-rl">Есть сотрудники</div></div>
+        </div>
+        <div id="mf-sc-wrap" style="display:none;margin-top:12px;">
+          <label style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--mf-gold);display:block;margin-bottom:7px;">Количество сотрудников</label>
+          <div class="mf-ctr">
+            <button class="mf-cb" id="mf-sc-m">−</button>
+            <div class="mf-cv" id="mf-sc-v">1</div>
+            <button class="mf-cb" id="mf-sc-p">+</button>
+            <span class="mf-cu">чел.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Блок 2 -->
+  <div class="mf-block" id="mf-cb2">
+    <div class="mf-bhead" id="mf-bh2">
+      <div class="mf-bnum" id="mf-bn2">2</div>
+      <div class="mf-btw"><div class="mf-bt">Первичная документация</div><div class="mf-bh">Если нужно вести документы по операциям</div></div>
+      <span class="mf-arr" id="mf-a2">▼</span>
+    </div>
+    <div class="mf-body" id="mf-bb2">
+      <div class="mf-togrow">
+        <div class="mf-tog" id="mf-tog-docs"><div class="mf-togk"></div></div>
+        <span class="mf-togt">Требуется вести первичную документацию</span>
+      </div>
+      <div id="mf-docs-fields" style="display:none;">
+        <div class="mf-hint">Укажите примерное количество документов в месяц.</div>
+        <div class="mf-docgrid">
+          <div class="mf-dfw"><label>Платёжные поручения</label><input class="mf-dinp" type="number" min="0" id="mf-dp" value="0"></div>
+          <div class="mf-dfw"><label>Документы реализации</label><input class="mf-dinp" type="number" min="0" id="mf-ds" value="0"></div>
+          <div class="mf-dfw"><label>Документы прихода</label><input class="mf-dinp" type="number" min="0" id="mf-di" value="0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Блок 3 -->
+  <div class="mf-block" id="mf-cb3">
+    <div class="mf-bhead" id="mf-bh3">
+      <div class="mf-bnum" id="mf-bn3">3</div>
+      <div class="mf-btw"><div class="mf-bt">Кадровый учёт</div><div class="mf-bh">Расчёт зарплат и кадровое делопроизводство</div></div>
+      <span class="mf-arr" id="mf-a3">▼</span>
+    </div>
+    <div class="mf-body" id="mf-bb3">
+      <div class="mf-togrow">
+        <div class="mf-tog" id="mf-tog-hr"><div class="mf-togk"></div></div>
+        <span class="mf-togt">Требуется вести кадровый учёт</span>
+      </div>
+      <div id="mf-hr-fields" style="display:none;margin-top:12px;">
+        <label style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--mf-gold);display:block;margin-bottom:7px;">Количество сотрудников</label>
+        <div class="mf-ctr">
+          <button class="mf-cb" id="mf-hr-m">−</button>
+          <div class="mf-cv" id="mf-hr-v">1</div>
+          <button class="mf-cb" id="mf-hr-p">+</button>
+          <span class="mf-cu">чел.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Блок 4 -->
+  <div class="mf-block" id="mf-cb4">
+    <div class="mf-bhead" id="mf-bh4">
+      <div class="mf-bnum" id="mf-bn4">4</div>
+      <div class="mf-btw"><div class="mf-bt">Дополнительные параметры</div><div class="mf-bh">Лизинг, эквайринг, счета, карты</div></div>
+      <span class="mf-arr" id="mf-a4">▼</span>
+    </div>
+    <div class="mf-body" id="mf-bb4">
+      <div class="mf-hint">Если ничего не применимо — оставьте значения «0».</div>
+      <div class="mf-exgrid">
+        <div class="mf-exrow"><div class="mf-exinfo"><div class="mf-exname">Договоры лизинга</div><div class="mf-exsub">Количество активных договоров</div></div><div class="mf-ctr"><button class="mf-cb" id="mf-lm">−</button><div class="mf-cv" id="mf-lv">0</div><button class="mf-cb" id="mf-lp">+</button></div></div>
+        <div class="mf-exrow"><div class="mf-exinfo"><div class="mf-exname">Эквайринг / ККТ</div><div class="mf-exsub">Количество касс и точек</div></div><div class="mf-ctr"><button class="mf-cb" id="mf-km">−</button><div class="mf-cv" id="mf-kv">0</div><button class="mf-cb" id="mf-kp">+</button></div></div>
+        <div class="mf-exrow"><div class="mf-exinfo"><div class="mf-exname">Расчётные счета</div><div class="mf-exsub">Количество обслуживаемых счетов</div></div><div class="mf-ctr"><button class="mf-cb" id="mf-am">−</button><div class="mf-cv" id="mf-av">0</div><button class="mf-cb" id="mf-ap">+</button></div></div>
+        <div class="mf-exrow"><div class="mf-exinfo"><div class="mf-exname">Платёжные / корпоративные карты</div><div class="mf-exsub">Количество карт</div></div><div class="mf-ctr"><button class="mf-cb" id="mf-cm">−</button><div class="mf-cv" id="mf-cv2">0</div><button class="mf-cb" id="mf-cp">+</button></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Блок 5 -->
+  <div class="mf-block" id="mf-cb5">
+    <div class="mf-bhead" id="mf-bh5">
+      <div class="mf-bnum" id="mf-bn5">5</div>
+      <div class="mf-btw"><div class="mf-bt">Разовые услуги</div><div class="mf-bh">Добавить к расчёту разовые услуги</div></div>
+      <span class="mf-arr" id="mf-a5">▼</span>
+    </div>
+    <div class="mf-body" id="mf-bb5">
+      <div class="mf-hint">Отметьте разовые услуги — они будут показаны в расчёте отдельной строкой.</div>
+      <div id="mf-once-list"></div>
+    </div>
+  </div>
+
+  <div class="mf-acts">
+    <button class="mf-btn-calc" id="mf-btn-calc">Рассчитать предварительную стоимость</button>
+    <button class="mf-btn-rst" id="mf-btn-rst">Сбросить</button>
+  </div>
+  <div class="mf-note">Заполните Блок 1 (форму собственности и СНО), затем нажмите кнопку расчёта.</div>
+
+  <div class="mf-result" id="mf-result">
+    <div class="mf-rlbl">Абонентское обслуживание от</div>
+    <div class="mf-ramt" id="mf-ramt">0</div>
+    <div class="mf-rsfx">руб. / месяц</div>
+    <div class="mf-r-once" id="mf-r-once-wrap">
+      <div class="mf-r-once-lbl">+ Разовые услуги</div>
+      <div class="mf-r-once-val" id="mf-r-once-val">0 ₽</div>
+      <div class="mf-r-once-sfx">единоразово</div>
+    </div>
+    <div class="mf-rdisc">Предоставленный расчёт стоимости услуг является предварительным и ориентировочным. Данная информация и итоговая сумма носят исключительно информационный характер и ни при каких условиях не являются публичной офертой, определяемой положениями Статьи 437 Гражданского кодекса РФ. Окончательная стоимость обслуживания формируется в виде индивидуального коммерческого предложения после детального анализа специфики вашего бизнеса.</div>
+  </div>
+
+  <div class="mf-lead" id="mf-lead">
+    <h3>Отправить расчёт менеджеру</h3>
+    <div class="mf-frow2">
+      <div class="mf-fg"><label style="display:block;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--mf-gold);margin-bottom:7px;">Ваше имя</label><input type="text" id="mf-lname" placeholder="Иван Иванов"></div>
+      <div class="mf-fg"><label style="display:block;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--mf-gold);margin-bottom:7px;">Телефон или e-mail</label><input type="text" id="mf-lct" placeholder="+7 (___) ___-__-__"></div>
+    </div>
+    <div class="mf-fg"><label style="display:block;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--mf-gold);margin-bottom:7px;">Комментарий</label><textarea id="mf-lcm" placeholder="Дополнительные вопросы..."></textarea></div>
+    <div class="consent-row" id="mf-calc-consent">
+      <div class="consent-box"></div>
+      <div class="consent-text">Нажимая кнопку «Отправить», я даю <a data-doc="consent">согласие на обработку персональных данных</a> и принимаю условия <a data-doc="policy">Политики конфиденциальности</a>.</div>
+    </div>
+    <button class="mf-fsubmit" id="mf-btn-lead">Отправить заявку менеджеру</button>
+  </div>
+
+  <div class="mf-succ" id="mf-succ">
+    <div style="font-size:36px;margin-bottom:10px;">✅</div>
+    <h4>Заявка отправлена!</h4>
+    <p>Мы получили ваш расчёт и свяжемся в ближайшее время.</p>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <div class="cta-label">Готовы начать?</div>
+    <h2>Получите индивидуальное<br><em>коммерческое предложение</em></h2>
+    <p>Оставьте заявку — обсудим задачи вашего бизнеса и подготовим персональное предложение с точной стоимостью.</p>
+    <div class="cta-actions">
+      <button class="btn-gold" id="open-modal">Заказать звонок</button>
+      <a href="index.html#contacts" class="btn-line">Все контакты</a>
+    </div>
+  </div>
+</section>
+
+<!-- DOC MODAL -->
+<div class="doc-modal-bg" id="doc-modal-bg">
+  <div class="doc-modal">
+    <div class="doc-modal-head">
+      <h3 id="doc-modal-title">Документ</h3>
+      <button class="doc-modal-close" id="doc-modal-close">×</button>
+    </div>
+    <div class="doc-modal-body" id="doc-modal-body"></div>
+  </div>
+</div>
+
+<!-- CALL MODAL -->
+<div class="modal-bg" id="modal-bg">
+  <div class="modal">
+    <button class="modal-close" id="modal-close">×</button>
+    <div id="modal-form">
+      <h3>Заказать звонок</h3>
+      <div class="modal-sub">Перезвоним в течение рабочего дня и подготовим коммерческое предложение под ваш бизнес.</div>
+      <div class="modal-fg"><label>Ваше имя</label><input type="text" id="modal-name" placeholder="Иван Иванов"></div>
+      <div class="modal-fg"><label>Телефон</label><input type="text" id="modal-phone" placeholder="+7 (___) ___-__-__"></div>
+      <div class="modal-fg"><label>Комментарий (необязательно)</label><textarea id="modal-comment" placeholder="Кратко опишите задачу..."></textarea></div>
+      <div class="consent-row" id="mf-modal-consent">
+        <div class="consent-box"></div>
+        <div class="consent-text">Нажимая кнопку «Отправить», я даю <a data-doc="consent">согласие на обработку персональных данных</a> и принимаю условия <a data-doc="policy">Политики конфиденциальности</a>.</div>
+      </div>
+      <button class="modal-submit" id="modal-submit">Отправить заявку</button>
+    </div>
+    <div class="modal-succ" id="modal-succ">
+      <div class="modal-succ-icon">✅</div>
+      <h4>Заявка принята!</h4>
+      <p>Мы свяжемся с вами в ближайшее рабочее время.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <span class="logo-main">Магистраль Финанс</span>
+        <span class="logo-sub">Услуги бухгалтера</span>
+      </div>
+      <p>Оказывает: ИП Бородина И. Е., ИП Ганыкина Н. С., ООО «Магистраль». Работаем онлайн по всей России.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Разделы сайта</h4>
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="buh.html">Услуги бухгалтера</a></li>
+        <li><a href="law.html">Услуги юриста</a></li>
+        <li><a href="tender.html">Бизнес-ассистент</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Контакты</h4>
+      <ul>
+        <li><div class="footer-contact-label">Телефон</div><div class="footer-contact-value"><a href="tel:+70000000000">+7 (000) 000-00-00</a></div></li>
+        <li><div class="footer-contact-label">E-mail</div><div class="footer-contact-value"><a href="mailto:info@magistral-finance.ru">info@magistral-finance.ru</a></div></li>
+        <li><div class="footer-contact-label">Мессенджеры</div><div class="footer-contact-value">Telegram · WhatsApp</div></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-copy">
+    <span>© 2025 Магистраль Финанс. Все права защищены.</span>
+    <span style="display:flex;gap:18px;flex-wrap:wrap;">
+      <a href="#" data-doc="policy" style="color:var(--muted);text-decoration:underline;">Политика конфиденциальности</a>
+      <a href="#" data-doc="consent" style="color:var(--muted);text-decoration:underline;">Согласие на обработку ПД</a>
+    </span>
+  </div>
+</footer>
+
+<!-- ════════ ДАННЫЕ ════════ -->
+<script>
+window.MF_GROUPS = [
+  {
+    title: 'Регистрация ООО или ИП',
+    items: [
+      { id: 'reg_docs',    name: 'Подготовка пакета документов на регистрацию', price: 3500 },
+      { id: 'reg_sno',     name: 'Подбор системы налогообложения', price: 2000 },
+      { id: 'reg_charter', name: 'Разработка устава ООО (не типовая форма)', price: 3000 }
+    ]
+  },
+  {
+    title: 'Отчётность',
+    items: [
+      { id: 'rep_ip_usn_0',   name: 'Сдача нулевой отчётности ИП на УСН',  price: 3000 },
+      { id: 'rep_ip_osno_0',  name: 'Сдача нулевой отчётности ИП на ОСНО', price: 4000 },
+      { id: 'rep_ooo_usn_0',  name: 'Сдача нулевой отчётности ООО на УСН', price: 4000 },
+      { id: 'rep_ooo_osno_0', name: 'Сдача нулевой отчётности ООО на ОСНО',price: 5000 },
+      { id: 'rep_active',     name: 'Сдача отчётности действующих компаний', toCalc: true, calcText: 'рассчитайте в калькуляторе ниже →' },
+      { id: 'rep_req',        name: 'Ответ на требования (налоговая и другие госорганы)', price: 3000 }
+    ]
+  },
+  {
+    title: 'Кадровый учёт',
+    items: [
+      { id: 'hr_salary',  name: 'Расчёт заработной платы, больничных, отпускных', price: 800, qty: true, unit: 'сотрудник' },
+      { id: 'hr_docs',    name: 'Оформление кадровых документов', price: 1000, qty: true, unit: 'документ' },
+      { id: 'hr_reports', name: 'Формирование и сдача отчётности по сотрудникам', price: 3500 }
+    ]
+  }
+];
+</script>
+
+<!-- ════════ ДОКУМЕНТЫ + СОГЛАСИЕ ════════ -->
+<script>
+window.MF_CONSENT = (function () {
+  var DOCS = {
+    policy: {
+      title: 'Политика обработки персональных данных',
+      html:
+        '<h4>1. Общие положения</h4>' +
+        '<p>1.1. Настоящая Политика составлена в соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению их безопасности, предпринимаемые следующими лицами (совместно и раздельно — «Оператор»):</p>' +
+        '<ul><li>Индивидуальный предприниматель Бородина Ирина Евгеньевна (ИНН 360406672240) — в части данных, собираемых в разделах бухгалтерских услуг и онлайн-калькулятора;</li>' +
+        '<li>Адвокатское бюро Воронежской области «Мешков П.В. и партнёры» (ИНН 3664243101, ОГРН 1193600001033) — в части данных, собираемых в разделах юридических и адвокатских услуг.</li></ul>' +
+        '<p>1.2. Оператор ставит своей важнейшей целью соблюдение прав и свобод человека при обработке его персональных данных, в том числе защиты прав на неприкосновенность частной жизни, личную и семейную тайну.</p>' +
+        '<p>1.3. Политика применяется ко всей информации, которую Оператор может получить о посетителях Сайта.</p>' +
+        '<h4>2. Основные понятия</h4>' +
+        '<p>Пользователь — любой посетитель Сайта. Персональные данные — любая информация, относящаяся прямо или косвенно к определённому Пользователю. Обработка — любое действие с персональными данными (сбор, запись, хранение, использование, передача, удаление и т.д.).</p>' +
+        '<h4>3. Состав обрабатываемых данных</h4>' +
+        '<ul><li>Имя (или ФИО);</li><li>Номер контактного телефона;</li><li>Адрес электронной почты;</li><li>Суть обращения (описание ситуации);</li>' +
+        '<li>Обезличенные данные о посетителях (файлы cookie, данные веб-аналитики, сведения об ОС, браузере и IP-адресе).</li></ul>' +
+        '<h4>4. Цели обработки</h4>' +
+        '<ul><li>Предоставление ответов на запросы, проведение первичных консультаций;</li><li>Расчёт предварительной стоимости услуг посредством онлайн-калькулятора;</li>' +
+        '<li>Формирование и направление индивидуальных коммерческих предложений;</li><li>Связь с Пользователем по телефону или электронной почте.</li></ul>' +
+        '<h4>5. Правовые основания</h4>' +
+        '<p>Гражданский кодекс РФ; Федеральный закон от 31.05.2002 № 63-ФЗ «Об адвокатской деятельности и адвокатуре в РФ»; Федеральный закон № 152-ФЗ «О персональных данных»; согласие Пользователя, выраженное путём заполнения форм обратной связи и подтверждённое нажатием кнопки отправки.</p>' +
+        '<h4>6. Порядок сбора, хранения, передачи</h4>' +
+        '<p>6.1. Безопасность данных обеспечивается реализацией правовых, организационных и технических мер.</p>' +
+        '<p>6.2. Данные не передаются третьим лицам, за исключением: наличия прямого согласия Пользователя (в т.ч. на поручение обработки привлечённым специалистам-бухгалтерам); случаев, прямо предусмотренных законодательством РФ.</p>' +
+        '<p>6.3. Данные, полученные Адвокатским бюро, дополнительно защищены положениями об адвокатской тайне.</p>' +
+        '<h4>7. Сроки обработки и уничтожение</h4>' +
+        '<p>7.1. Срок обработки определяется достижением целей сбора. Пользователь может отозвать согласие, направив уведомление на e-mail [УКАЖИТЕ_ОБЩИЙ_EMAIL] с пометкой «Отзыв согласия на обработку персональных данных».</p>' +
+        '<p>7.2. При отзыве согласия или достижении целей Оператор прекращает обработку и уничтожает данные в срок не более 30 дней.</p>' +
+        '<h4>8. Заключительные положения</h4>' +
+        '<p>8.1. Разъяснения можно получить по e-mail [УКАЖИТЕ_ОБЩИЙ_EMAIL]. 8.2. Политика действует бессрочно до замены новой версией; актуальный текст доступен в подвале Сайта.</p>'
+    },
+    consent: {
+      title: 'Согласие на обработку персональных данных',
+      html:
+        '<p>Пользователь, оставляя заявку, оформляя запрос на обратный звонок, используя онлайн-калькулятор или иные формы обратной связи на Сайте в разделах бухгалтерских услуг, принимает настоящее Согласие на обработку персональных данных.</p>' +
+        '<p>Действуя свободно, своей волей и в своём интересе, Пользователь даёт согласие Индивидуальному предпринимателю Бородиной Ирине Евгеньевне (ИНН 360406672240) (далее — Оператор) на обработку своих персональных данных со следующими условиями:</p>' +
+        '<p>1. Согласие даётся на обработку как без использования средств автоматизации, так и с их использованием.</p>' +
+        '<p>2. Согласие даётся на обработку данных, не являющихся специальными или биометрическими: имя; номер телефона; e-mail; пользовательские данные (местоположение, тип и версия ОС, браузера, источник перехода, IP-адрес).</p>' +
+        '<p>3. Цель обработки: ознакомление с услугами Оператора, расчёт предварительной стоимости посредством онлайн-калькулятора, предоставление ответов на запросы, направление коммерческих предложений, связь для проведения консультаций.</p>' +
+        '<p>4. Действия с данными: сбор, запись, систематизация, накопление, хранение, уточнение, извлечение, использование, передача, блокирование, удаление, уничтожение.</p>' +
+        '<p>5. Поручение обработки третьим лицам: Пользователь соглашается, что Оператор вправе поручить обработку данных (имя, телефон, e-mail и суть запроса) привлечённым профильным специалистам-бухгалтерам (в статусе ИП или самозанятых) на основании договоров и соглашений о конфиденциальности.</p>' +
+        '<p>6. Срок действия и отзыв: согласие даётся до достижения целей обработки или до отзыва путём направления заявления Оператору на e-mail [УКАЖИТЕ_E-MAIL].</p>'
+    }
+  };
+
+  var bg = document.getElementById('doc-modal-bg');
+  var titleEl = document.getElementById('doc-modal-title');
+  var bodyEl = document.getElementById('doc-modal-body');
+  var closeBtn = document.getElementById('doc-modal-close');
+
+  function openDoc(key) {
+    var doc = DOCS[key];
+    if (!doc || !bg) return;
+    titleEl.textContent = doc.title;
+    bodyEl.innerHTML = doc.html;
+    bodyEl.scrollTop = 0;
+    bg.classList.add('show');
+  }
+  function closeDoc() { if (bg) bg.classList.remove('show'); }
+
+  if (closeBtn) closeBtn.addEventListener('click', closeDoc);
+  if (bg) bg.addEventListener('click', function (e) { if (e.target === bg) closeDoc(); });
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-doc]');
+    if (!a) return;
+    e.preventDefault();
+    openDoc(a.getAttribute('data-doc'));
+  });
+
+  function setupConsent(rowId) {
+    var row = document.getElementById(rowId);
+    if (!row) return null;
+    row.addEventListener('click', function (e) {
+      if (e.target.closest('[data-doc]')) return;
+      row.classList.toggle('checked');
+    });
+    return row;
+  }
+
+  function verify(row) {
+    if (!row || !row.classList.contains('checked')) {
+      alert('Для отправки формы необходимо дать согласие на обработку персональных данных.');
+      return false;
+    }
+    var record = { consent: true, datetime: new Date().toISOString(), ip: null };
+    try {
+      fetch('https://api.ipify.org?format=json').then(function (r) { return r.json(); })
+        .then(function (d) { record.ip = d.ip; window.MF_LAST_CONSENT = record; })
+        .catch(function () { window.MF_LAST_CONSENT = record; });
+    } catch (err) {}
+    window.MF_LAST_CONSENT = record;
+    return true;
+  }
+
+  function attachPhone(id) {
+    var input = document.getElementById(id);
+    if (!input) return;
+    input.setAttribute('inputmode', 'tel');
+    input.setAttribute('maxlength', '18');
+    function format(v) {
+      var d = v.replace(/\D/g, '');
+      if (d.length === 0) return '';
+      if (d[0] === '8') d = '7' + d.slice(1);
+      if (d[0] !== '7') d = '7' + d;
+      d = d.slice(0, 11);
+      var r = '+7';
+      if (d.length > 1) r += ' (' + d.slice(1, 4);
+      if (d.length >= 4) r += ') ' + d.slice(4, 7);
+      if (d.length >= 7) r += '-' + d.slice(7, 9);
+      if (d.length >= 9) r += '-' + d.slice(9, 11);
+      return r;
+    }
+    input.addEventListener('focus', function () { if (!input.value) input.value = '+7 '; });
+    input.addEventListener('input', function () { input.value = format(input.value); });
+    input.addEventListener('blur', function () {
+      var d = input.value.replace(/\D/g, '');
+      if (d.length <= 1) input.value = '';
+    });
+  }
+  function validContact(value) {
+    var v = (value || '').trim();
+    if (!v) return false;
+    if (/[a-zA-Zа-яА-Я@]/.test(v)) return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    return v.replace(/\D/g, '').length === 11;
+  }
+  function validPhone(value) {
+    return (value || '').replace(/\D/g, '').length === 11;
+  }
+
+  // Универсальная маска: телефон ИЛИ e-mail.
+  // Пока пользователь вводит только цифры/символы телефона — форматируем как +7.
+  // Как только появляется буква или @ — оставляем как есть (это e-mail).
+  function attachContact(id) {
+    var input = document.getElementById(id);
+    if (!input) return;
+    function isEmailLike(v) { return /[a-zA-Zа-яА-Я@]/.test(v); }
+    function formatPhone(v) {
+      var d = v.replace(/\D/g, '');
+      if (d.length === 0) return '';
+      if (d[0] === '8') d = '7' + d.slice(1);
+      if (d[0] !== '7') d = '7' + d;
+      d = d.slice(0, 11);
+      var r = '+7';
+      if (d.length > 1) r += ' (' + d.slice(1, 4);
+      if (d.length >= 4) r += ') ' + d.slice(4, 7);
+      if (d.length >= 7) r += '-' + d.slice(7, 9);
+      if (d.length >= 9) r += '-' + d.slice(9, 11);
+      return r;
+    }
+    input.addEventListener('input', function () {
+      if (isEmailLike(input.value)) return; // e-mail — не трогаем
+      input.value = formatPhone(input.value);
+    });
+    input.addEventListener('blur', function () {
+      if (isEmailLike(input.value)) return;
+      var d = input.value.replace(/\D/g, '');
+      if (d.length <= 1) input.value = '';
+    });
+  }
+
+  return { setupConsent: setupConsent, verify: verify, openDoc: openDoc, attachPhone: attachPhone, attachContact: attachContact, validContact: validContact, validPhone: validPhone };
+})();
+</script>
+
+<!-- ════════ ПЛИТКИ (информационные) + СКРОЛЛ ════════ -->
+<script>
+(function () {
+  function headerOffset() { var h = document.querySelector('header'); return (h ? h.offsetHeight : 80) + 20; }
+  function scrollToEl(el) {
+    if (!el) return;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - headerOffset();
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+
+  // Плавный скролл по якорям (кроме "#" и data-doc)
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      if (this.hasAttribute('data-doc')) return;
+      var target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      scrollToEl(target);
+    });
+  });
+
+  var GROUPS = window.MF_GROUPS;
+  var tiles = document.getElementById('mf-tiles');
+  if (!tiles) return;
+
+  function fmt(n) { return n.toLocaleString('ru-RU'); }
+
+  var html = '';
+  GROUPS.forEach(function (group) {
+    html += '<div class="tile"><div class="tile-title">' + group.title + '</div><div class="tile-list">';
+    group.items.forEach(function (item) {
+      if (item.toCalc) {
+        html += '<div class="tile-item to-calc" data-tocalc="1"><div class="tile-name">' + item.name + '</div><div class="tile-price">' + item.calcText + '</div></div>';
+      } else {
+        var priceHtml = 'от <b>' + fmt(item.price) + ' ₽</b>' + (item.qty ? ' / ' + item.unit : '');
+        html += '<div class="tile-item"><div class="tile-name">' + item.name + '</div><div class="tile-price">' + priceHtml + '</div></div>';
+      }
+    });
+    html += '</div></div>';
+  });
+  tiles.innerHTML = html;
+
+  document.querySelectorAll('.tile-item[data-tocalc]').forEach(function (el) {
+    el.addEventListener('click', function () { scrollToEl(document.getElementById('mf-calc')); });
+  });
+})();
+</script>
+
+<!-- ════════ КАЛЬКУЛЯТОР ════════ -->
+<script>
+(function () {
+  var GROUPS = window.MF_GROUPS;
+
+  // Тарифы (фиксированные, одинаковы для ИП и ООО)
+  var P = {
+    usn_d: 15000, usn_d_v: 20000,
+    usn_dr: 20000, usn_dr_v: 25000,
+    osno: 25000, patent: 15000,
+    step: 3000, intv: 5,
+    dp: 120, ds: 300, di: 200, hr: 300,
+    lease: 3000, kkt: 1200, acc: 1200, card: 1000
+  };
+
+  var S = { own:null, sno:null, vat:null, staff:null, sc:1, docsOn:false, hrOn:false, hrc:1, lv:0, kv:0, av:0, cv:0, once:{} };
+
+  function g(id) { return document.getElementById(id); }
+  function on(id, ev, fn) { var el = g(id); if (el) el.addEventListener(ev, fn); }
+  function showEl(id) { var el = g(id); if (el) el.style.display = 'block'; }
+  function hideEl(id) { var el = g(id); if (el) el.style.display = 'none'; }
+  function fmt(n) { return n.toLocaleString('ru-RU'); }
+  function findItem(id) {
+    for (var gi = 0; gi < GROUPS.length; gi++)
+      for (var ii = 0; ii < GROUPS[gi].items.length; ii++)
+        if (GROUPS[gi].items[ii].id === id) return GROUPS[gi].items[ii];
+    return null;
+  }
+  function headerOffset() { var h = document.querySelector('header'); return (h ? h.offsetHeight : 80) + 20; }
+  function scrollToEl(el) { if (!el) return; var top = el.getBoundingClientRect().top + window.pageYOffset - headerOffset(); window.scrollTo({ top: top, behavior: 'smooth' }); }
+
+  // Раскрытие блоков
+  [1,2,3,4,5].forEach(function(n) {
+    on('mf-bh' + n, 'click', function() {
+      var body = g('mf-bb' + n), arr = g('mf-a' + n), blk = g('mf-cb' + n);
+      if (!body) return;
+      var open = body.classList.contains('open');
+      body.classList.toggle('open', !open);
+      body.style.display = open ? 'none' : 'block';
+      if (arr) arr.classList.toggle('open', !open);
+      if (blk) blk.classList.toggle('open', !open);
+    });
+  });
+
+  // Радиокнопки
+  document.querySelectorAll('.mf-ro').forEach(function(opt) {
+    opt.addEventListener('click', function() {
+      var grp = this.getAttribute('data-mfgroup');
+      var val = this.getAttribute('data-mfval');
+      document.querySelectorAll('.mf-ro[data-mfgroup="' + grp + '"]').forEach(function(o){ o.classList.remove('sel'); });
+      this.classList.add('sel');
+      S[grp] = val;
+      onChange(grp);
+    });
+  });
+
+  function onChange(field) {
+    if (field === 'own') {
+      var isIP = S.own === 'ip';
+      showEl('mf-fg-sno');
+      S.sno = null; S.vat = null;
+      hideEl('mf-fg-vat');
+      var rg = g('mf-rg-sno');
+      if (rg) {
+        rg.innerHTML = '';
+        var opts = isIP
+          ? [['usn_d','УСН «Доходы»'],['usn_dr','УСН «Доходы минус расходы»'],['osno','ОСНО'],['patent','Патент (ПСН)']]
+          : [['usn_d','УСН «Доходы»'],['usn_dr','УСН «Доходы минус расходы»'],['osno','ОСНО']];
+        opts.forEach(function(o) {
+          var d = document.createElement('div');
+          d.className = 'mf-ro';
+          d.setAttribute('data-mfgroup','sno');
+          d.setAttribute('data-mfval', o[0]);
+          d.innerHTML = '<div class="mf-rd"></div><div class="mf-rl">' + o[1] + '</div>';
+          d.addEventListener('click', function() {
+            document.querySelectorAll('.mf-ro[data-mfgroup="sno"]').forEach(function(x){ x.classList.remove('sel'); });
+            d.classList.add('sel');
+            S.sno = o[0];
+            onChange('sno');
+          });
+          rg.appendChild(d);
+        });
+      }
+      // Сотрудники
+      showEl('mf-fg-staff');
+      var staffRadios = g('mf-rg-staff');
+      var staffLabel = g('mf-staff-label');
+      if (!isIP) {
+        S.staff = 'yes';
+        if (staffRadios) staffRadios.style.display = 'none';
+        if (staffLabel) staffLabel.textContent = 'Сотрудники';
+        showEl('mf-sc-wrap');
+      } else {
+        S.staff = null;
+        if (staffRadios) staffRadios.style.display = 'flex';
+        if (staffLabel) staffLabel.textContent = 'Есть ли сотрудники?';
+        document.querySelectorAll('.mf-ro[data-mfgroup="staff"]').forEach(function(o){ o.classList.remove('sel'); });
+        hideEl('mf-sc-wrap');
+      }
+      updProg();
+    }
+    if (field === 'sno') {
+      var nv = S.sno === 'usn_d' || S.sno === 'usn_dr';
+      var vatEl = g('mf-fg-vat');
+      if (vatEl) vatEl.style.display = nv ? 'block' : 'none';
+      if (!nv) S.vat = null;
+      updProg();
+    }
+    if (field === 'vat') updProg();
+    if (field === 'staff') {
+      var scw = g('mf-sc-wrap');
+      if (scw) scw.style.display = S.staff === 'yes' ? 'block' : 'none';
+      updProg();
+    }
+  }
+
+  function updProg() {
+    var nv = S.sno === 'usn_d' || S.sno === 'usn_dr';
+    var ok = S.own && S.sno && (!nv || S.vat) && (S.own === 'ooo' || S.staff !== null);
+    setDot(1, !!ok, true);
+  }
+  function setDot(n, done, isCur) {
+    var d = g('mf-d' + n), l = g('mf-l' + n);
+    if (!d || !l) return;
+    d.classList.toggle('done', done);
+    d.classList.toggle('cur', !done && !!isCur);
+    d.textContent = done ? '✓' : n;
+    l.classList.toggle('cur', done || !!isCur);
+  }
+  function setOptDot(n, isOn) {
+    var d = g('mf-d' + n), l = g('mf-l' + n);
+    if (!d || !l) return;
+    d.classList.toggle('done', isOn);
+    d.textContent = isOn ? '✓' : n;
+    l.classList.toggle('cur', isOn);
+  }
+
+  on('mf-tog-docs', 'click', function() {
+    S.docsOn = !S.docsOn;
+    this.classList.toggle('on', S.docsOn);
+    var f = g('mf-docs-fields'); if (f) f.style.display = S.docsOn ? 'block' : 'none';
+    setOptDot(2, S.docsOn);
+  });
+  on('mf-tog-hr', 'click', function() {
+    S.hrOn = !S.hrOn;
+    this.classList.toggle('on', S.hrOn);
+    var f = g('mf-hr-fields'); if (f) f.style.display = S.hrOn ? 'block' : 'none';
+    setOptDot(3, S.hrOn);
+  });
+
+  function mkCtr(mId, vId, pId, key, min) {
+    on(mId, 'click', function() {
+      S[key] = Math.max(min, S[key] - 1);
+      var v = g(vId); if (v) v.textContent = S[key];
+      if (['lv','kv','av','cv'].indexOf(key) >= 0) updExtra();
+    });
+    on(pId, 'click', function() {
+      S[key]++;
+      var v = g(vId); if (v) v.textContent = S[key];
+      if (['lv','kv','av','cv'].indexOf(key) >= 0) updExtra();
+    });
+  }
+  mkCtr('mf-sc-m','mf-sc-v','mf-sc-p','sc',1);
+  mkCtr('mf-hr-m','mf-hr-v','mf-hr-p','hrc',1);
+  mkCtr('mf-lm','mf-lv','mf-lp','lv',0);
+  mkCtr('mf-km','mf-kv','mf-kp','kv',0);
+  mkCtr('mf-am','mf-av','mf-ap','av',0);
+  mkCtr('mf-cm','mf-cv2','mf-cp','cv',0);
+
+  function updExtra() { setOptDot(4, S.lv + S.kv + S.av + S.cv > 0); }
+
+  // Блок 5 — разовые услуги
+  var onceList = g('mf-once-list');
+  if (onceList) {
+    var h = '';
+    GROUPS.forEach(function (group) {
+      var items = group.items.filter(function (i) { return !i.toCalc; });
+      if (items.length === 0) return;
+      h += '<div class="mf-once-group"><div class="mf-once-gtitle">' + group.title + '</div>';
+      items.forEach(function (item) {
+        var priceLabel = '<b>' + fmt(item.price) + ' ₽</b>' + (item.qty ? ' / ' + item.unit : '');
+        h += '<div class="mf-once-item" data-once="' + item.id + '"><div class="mf-once-check"></div>';
+        h += '<div class="mf-once-name">' + item.name + '</div><div class="mf-once-price">' + priceLabel + '</div>';
+        if (item.qty) {
+          h += '<div class="mf-once-qty" id="mf-once-qty-' + item.id + '" style="display:none;">';
+          h += '<button class="mf-once-qb" data-once-m="' + item.id + '">−</button>';
+          h += '<div class="mf-once-qv" id="mf-once-qv-' + item.id + '">1</div>';
+          h += '<button class="mf-once-qb" data-once-p="' + item.id + '">+</button></div>';
+        }
+        h += '</div>';
+      });
+      h += '</div>';
+    });
+    onceList.innerHTML = h;
+
+    document.querySelectorAll('[data-once]').forEach(function (el) {
+      el.addEventListener('click', function () { toggleOnce(this.getAttribute('data-once')); });
+    });
+    document.querySelectorAll('[data-once-m]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var id = this.getAttribute('data-once-m');
+        if (S.once[id] === undefined) return;
+        S.once[id] = Math.max(1, S.once[id] - 1);
+        g('mf-once-qv-' + id).textContent = S.once[id];
+      });
+    });
+    document.querySelectorAll('[data-once-p]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var id = this.getAttribute('data-once-p');
+        if (S.once[id] === undefined) return;
+        S.once[id]++;
+        g('mf-once-qv-' + id).textContent = S.once[id];
+      });
+    });
+  }
+
+  function toggleOnce(id) {
+    var item = findItem(id);
+    var row = document.querySelector('[data-once="' + id + '"]');
+    var qty = item && item.qty ? g('mf-once-qty-' + id) : null;
+    if (S.once[id] !== undefined) {
+      delete S.once[id];
+      if (row) row.classList.remove('sel');
+      if (qty) qty.style.display = 'none';
+    } else {
+      S.once[id] = 1;
+      if (row) row.classList.add('sel');
+      if (qty) { qty.style.display = 'flex'; g('mf-once-qv-' + id).textContent = 1; }
+    }
+    setOptDot(5, Object.keys(S.once).length > 0);
+  }
+
+  // Расчёт
+  on('mf-btn-calc', 'click', function() {
+    if (!S.own || !S.sno) { alert('Заполните Блок 1: выберите форму собственности и систему налогообложения.'); return; }
+    var nv = S.sno === 'usn_d' || S.sno === 'usn_dr';
+    if (nv && !S.vat) { alert('Укажите, являетесь ли вы плательщиком НДС.'); return; }
+    if (S.own === 'ip' && !S.staff) { alert('Укажите, есть ли у вас сотрудники.'); return; }
+
+    var dp = parseInt(g('mf-dp') ? g('mf-dp').value : 0) || 0;
+    var ds = parseInt(g('mf-ds') ? g('mf-ds').value : 0) || 0;
+    var di = parseInt(g('mf-di') ? g('mf-di').value : 0) || 0;
+
+    var base = 0;
+    if (S.sno === 'usn_d')  base = S.vat === 'yes' ? P.usn_d_v  : P.usn_d;
+    if (S.sno === 'usn_dr') base = S.vat === 'yes' ? P.usn_dr_v : P.usn_dr;
+    if (S.sno === 'osno')   base = P.osno;
+    if (S.sno === 'patent') base = P.patent;
+
+    var monthly = base;
+
+    // Доплата за сотрудников: за каждые начатые 5 человек +3000
+    if (S.own === 'ooo' || S.staff === 'yes') {
+      monthly += Math.ceil(S.sc / P.intv) * P.step;
+    }
+
+    if (S.docsOn) monthly += dp*P.dp + ds*P.ds + di*P.di;
+    if (S.hrOn)   monthly += S.hrc * P.hr;
+    monthly += S.lv*P.lease + S.kv*P.kkt + S.av*P.acc + S.cv*P.card;
+
+    var once = 0;
+    Object.keys(S.once).forEach(function (id) {
+      var item = findItem(id);
+      once += (item.price || 0) * S.once[id];
+    });
+
+    var amt = g('mf-ramt'); if (amt) amt.textContent = fmt(monthly);
+    var onceWrap = g('mf-r-once-wrap');
+    if (onceWrap) {
+      if (once > 0) { onceWrap.classList.add('show'); g('mf-r-once-val').textContent = fmt(once) + ' ₽'; }
+      else { onceWrap.classList.remove('show'); }
+    }
+
+    var res = g('mf-result'); if (res) res.classList.add('show');
+    var lead = g('mf-lead'); if (lead) lead.style.display = 'block';
+    scrollToEl(res);
+  });
+
+  // Сброс
+  on('mf-btn-rst', 'click', function() {
+    S = { own:null, sno:null, vat:null, staff:null, sc:1, docsOn:false, hrOn:false, hrc:1, lv:0, kv:0, av:0, cv:0, once:{} };
+    document.querySelectorAll('.mf-ro').forEach(function(o){ o.classList.remove('sel'); });
+    document.querySelectorAll('.mf-once-item').forEach(function(o){ o.classList.remove('sel'); });
+    document.querySelectorAll('.mf-once-qty').forEach(function(o){ o.style.display = 'none'; });
+    ['mf-fg-sno','mf-fg-vat','mf-fg-staff','mf-sc-wrap','mf-docs-fields','mf-hr-fields'].forEach(hideEl);
+    var td = g('mf-tog-docs'); if (td) td.classList.remove('on');
+    var th = g('mf-tog-hr'); if (th) th.classList.remove('on');
+    ['mf-dp','mf-ds','mf-di'].forEach(function(id){ var el = g(id); if (el) el.value = 0; });
+    if (g('mf-sc-v')) g('mf-sc-v').textContent = 1;
+    if (g('mf-hr-v')) g('mf-hr-v').textContent = 1;
+    ['mf-lv','mf-kv','mf-av','mf-cv2'].forEach(function(id){ var el = g(id); if (el) el.textContent = 0; });
+    [1,2,3,4,5].forEach(function(n){ setDot(n,false,n===1); });
+    if (g('mf-result')) g('mf-result').classList.remove('show');
+    if (g('mf-lead')) g('mf-lead').style.display = 'none';
+    if (g('mf-succ')) g('mf-succ').classList.remove('show');
+    if (g('mf-lname')) g('mf-lname').value = '';
+    if (g('mf-lct')) g('mf-lct').value = '';
+    if (g('mf-lcm')) g('mf-lcm').value = '';
+    var cc = g('mf-calc-consent'); if (cc) cc.classList.remove('checked');
+    scrollToEl(g('mf-calc'));
+  });
+
+  // Заявка из калькулятора
+  var calcConsent = window.MF_CONSENT.setupConsent('mf-calc-consent');
+  window.MF_CONSENT.attachContact('mf-lct');
+
+  // Куда отправляются заявки (временный адрес — замените на свой)
+  var LEAD_EMAIL = 'sid@cdmp.ru';
+
+  function buildLeadText() {
+    var lines = [];
+    lines.push('Заявка с калькулятора — Магистраль Финанс (бухгалтерия)');
+    lines.push('');
+    lines.push('Имя: ' + (g('mf-lname') ? g('mf-lname').value.trim() : ''));
+    lines.push('Контакт: ' + (g('mf-lct') ? g('mf-lct').value.trim() : ''));
+    var cm = g('mf-lcm') ? g('mf-lcm').value.trim() : '';
+    if (cm) lines.push('Комментарий: ' + cm);
+    lines.push('');
+    lines.push('— Параметры расчёта —');
+    lines.push('Форма собственности: ' + (S.own === 'ooo' ? 'ООО' : 'ИП'));
+    lines.push('Система налогообложения: ' + (S.sno || '—') + (S.vat === 'yes' ? ' (с НДС)' : ''));
+    lines.push('Сотрудников: ' + ((S.own === 'ooo' || S.staff === 'yes') ? S.sc : 0));
+    if (S.docsOn) lines.push('Первичка: ПП ' + (g('mf-dp').value||0) + ', реализация ' + (g('mf-ds').value||0) + ', приход ' + (g('mf-di').value||0));
+    if (S.hrOn) lines.push('Кадровый учёт: ' + S.hrc + ' чел.');
+    if (S.lv) lines.push('Лизинг: ' + S.lv);
+    if (S.kv) lines.push('Эквайринг/ККТ: ' + S.kv);
+    if (S.av) lines.push('Расчётные счета: ' + S.av);
+    if (S.cv) lines.push('Карты: ' + S.cv);
+    var onceIds = Object.keys(S.once);
+    if (onceIds.length) {
+      lines.push('Разовые услуги:');
+      onceIds.forEach(function (id) {
+        var it = findItem(id);
+        if (it) lines.push('  • ' + it.name + ' × ' + S.once[id]);
+      });
+    }
+    lines.push('');
+    lines.push('Итог (абонентское обслуживание): ' + (g('mf-ramt') ? g('mf-ramt').textContent : '') + ' ₽/мес');
+    if (g('mf-r-once-wrap') && g('mf-r-once-wrap').classList.contains('show')) {
+      lines.push('Разовые услуги (единоразово): ' + g('mf-r-once-val').textContent);
+    }
+    return lines.join('\n');
+  }
+
+  on('mf-btn-lead', 'click', function() {
+    if (!g('mf-lname').value.trim()) { alert('Укажите ваше имя.'); return; }
+    if (!window.MF_CONSENT.validContact(g('mf-lct').value)) {
+      alert('Укажите корректный телефон (+7 и 10 цифр) или e-mail.'); return;
+    }
+    if (!window.MF_CONSENT.verify(calcConsent)) return;
+
+    // Формируем письмо и открываем почтовый клиент
+    var subject = encodeURIComponent('Заявка с калькулятора — Магистраль Финанс');
+    var body = encodeURIComponent(buildLeadText());
+    var mailto = 'mailto:' + LEAD_EMAIL + '?subject=' + subject + '&body=' + body;
+    try { window.location.href = mailto; } catch (e) {}
+
+    if (g('mf-lead')) g('mf-lead').style.display = 'none';
+    if (g('mf-result')) g('mf-result').classList.remove('show');
+    if (g('mf-succ')) g('mf-succ').classList.add('show');
+    scrollToEl(g('mf-succ'));
+  });
+
+  var bb1 = g('mf-bb1'); if (bb1) bb1.style.display = 'block';
+})();
+</script>
+
+<!-- ════════ МОДАЛКА ЗВОНКА ════════ -->
+<script>
+(function() {
+  var bg = document.getElementById('modal-bg');
+  var openBtn = document.getElementById('open-modal');
+  var closeBtn = document.getElementById('modal-close');
+  var submitBtn = document.getElementById('modal-submit');
+  var form = document.getElementById('modal-form');
+  var succ = document.getElementById('modal-succ');
+  if (!bg) return;
+
+  function open() { bg.classList.add('show'); document.body.style.overflow = 'hidden'; }
+  function close() {
+    bg.classList.remove('show'); document.body.style.overflow = '';
+    setTimeout(function() {
+      form.style.display = 'block';
+      succ.classList.remove('show');
+      document.getElementById('modal-name').value = '';
+      document.getElementById('modal-phone').value = '';
+      document.getElementById('modal-comment').value = '';
+    }, 300);
+  }
+  if (openBtn) openBtn.addEventListener('click', open);
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  bg.addEventListener('click', function(e) { if (e.target === bg) close(); });
+
+  var modalConsent = window.MF_CONSENT.setupConsent('mf-modal-consent');
+  window.MF_CONSENT.attachPhone('modal-phone');
+
+  if (submitBtn) submitBtn.addEventListener('click', function() {
+    if (!document.getElementById('modal-name').value.trim()) { alert('Укажите ваше имя.'); return; }
+    if (!window.MF_CONSENT.validPhone(document.getElementById('modal-phone').value)) {
+      alert('Укажите корректный номер телефона в формате +7 (XXX) XXX-XX-XX.'); return;
+    }
+    if (!window.MF_CONSENT.verify(modalConsent)) return;
+    form.style.display = 'none';
+    succ.classList.add('show');
+  });
+})();
+</script>
+
+</body>
+</html>
