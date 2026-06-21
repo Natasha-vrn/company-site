@@ -152,18 +152,24 @@ footer { background: #060f1d; border-top: 1px solid rgba(201,168,76,0.15); paddi
 .footer-contact-value a { color: var(--gold-l); }
 .footer-copy { max-width: 1180px; margin: 24px auto 0; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--muted); flex-wrap: wrap; gap: 10px; }
 
-@media (max-width: 1000px) { header { padding: 14px 24px; } nav { gap: 18px; } nav a { font-size: 10px; letter-spacing: 1.5px; } .page-hero { padding: 170px 24px 60px; } }
+@media (max-width: 1000px) { header { padding: 14px 18px; } nav { gap: 16px; } nav a { font-size: 10px; letter-spacing: 1.5px; } .page-hero { padding: 165px 20px 56px; } }
 @media (max-width: 768px) {
-  .page-hero { padding: 180px 20px 50px; } .page-intro-text { padding: 24px 22px; font-size: 14px; line-height: 1.8; }
-  .gold-line { margin: 0 20px; } .tasks, .cta { padding: 60px 20px; } .tiles-grid { gap: 16px; } .tile { padding: 26px 22px 22px; }
-  footer { padding: 40px 20px 20px; } .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .page-hero { padding: 170px 18px 48px; } .page-intro-text { padding: 22px 20px; font-size: 13.5px; line-height: 1.8; }
+  .gold-line { margin: 0 18px; } .tasks, .cta { padding: 52px 18px; } .tiles-grid { gap: 14px; } .tile { padding: 24px 20px 20px; }
+  .tasks-title { font-size: 26px; } .tile-title { font-size: 20px; }
+  footer { padding: 36px 18px 18px; } .footer-grid { grid-template-columns: 1fr; gap: 26px; }
   .doc-modal-head { padding: 18px 20px; } .doc-modal-head h3 { font-size: 18px; } .doc-modal-body { padding: 20px; }
 }
 @media (max-width: 600px) {
-  nav { gap: 12px 14px; } nav a { font-size: 9px; letter-spacing: 1px; }
-  .hero-actions { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; } .hero-actions a { width: 100%; text-align: center; padding: 15px 20px; }
-  .cta-actions { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; } .cta-actions .btn-gold, .cta-actions .btn-line { width: 100%; text-align: center; }
-  .footer-copy { flex-direction: column; text-align: center; gap: 6px; } .modal { padding: 28px 22px; }
+  .logo-main { font-size: 18px; letter-spacing: 2px; } .logo-sub { font-size: 8px; letter-spacing: 3px; }
+  header { gap: 10px; }
+  nav { gap: 8px 12px; } nav a { font-size: 9.5px; letter-spacing: 0.5px; }
+  .page-hero { padding: 150px 16px 44px; }
+  .hero-actions { flex-direction: column; width: 100%; } .hero-actions a { width: 100%; text-align: center; padding: 14px 18px; }
+  .tasks, .cta { padding: 44px 16px; }
+  .cta-actions { flex-direction: column; width: 100%; } .cta-actions .btn-gold, .cta-actions .btn-line { width: 100%; text-align: center; }
+  .cta h2 { font-size: 26px; }
+  .footer-copy { flex-direction: column; text-align: center; gap: 8px; } .modal { padding: 26px 20px; }
 }
 
 /* ════════ КАЛЬКУЛЯТОР ════════ */
@@ -273,13 +279,18 @@ footer { background: #060f1d; border-top: 1px solid rgba(201,168,76,0.15); paddi
 .mf-succ p { font-size:12px; color:var(--mf-muted); line-height:1.7; }
 @keyframes mfFadeUp { from{opacity:0;transform:translateY(18px);} to{opacity:1;transform:translateY(0);} }
 @media (max-width: 768px) {
-  .mf-calc { padding: 60px 18px; } .mf-docgrid { grid-template-columns: 1fr 1fr; } .mf-frow2 { grid-template-columns: 1fr; }
+  .mf-calc { padding: 52px 16px; } .mf-stitle { font-size: 28px; margin-bottom: 30px; }
+  .mf-docgrid { grid-template-columns: 1fr 1fr; } .mf-frow2 { grid-template-columns: 1fr; }
   .mf-acts { flex-direction: column; align-items: stretch; } .mf-btn-calc, .mf-btn-rst { width: 100%; text-align: center; }
+  .mf-result { padding: 26px 20px; }
 }
 @media (max-width: 520px) {
-  .mf-dlbl { display: none; } .mf-prog { gap: 4px; } .mf-docgrid { grid-template-columns: 1fr; }
+  .mf-calc { padding: 44px 14px; }
+  .mf-dlbl { display: none; } .mf-prog { gap: 4px; margin-bottom: 24px; } .mf-docgrid { grid-template-columns: 1fr; }
   .mf-once-name { min-width: 0; flex-basis: 100%; } .mf-once-price, .mf-once-qty { margin-left: 0; }
-  .mf-bhead { padding: 14px 16px; gap: 10px; } .mf-bt { font-size: 16px; } .mf-body { padding: 0 16px 18px; }
+  .mf-bhead { padding: 14px 14px; gap: 10px; } .mf-bt { font-size: 16px; } .mf-bh { font-size: 9px; } .mf-body { padding: 0 14px 16px; }
+  .mf-ro { min-width: 0; flex-basis: 100%; padding: 9px 12px; }
+  .mf-ramt { font-size: 40px; } .mf-rdisc { font-size: 9px; }
 }
 </style>
 </head>
